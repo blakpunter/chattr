@@ -26,7 +26,7 @@ Array.prototype.contains = function (val) {
 };
 
 /* Démarage du serveur */
-httpServer.listen(1337);
+httpServer.listen(80);
 
 /* Démarrage de Sokets */
 var io = require('socket.io').listen(httpServer);
