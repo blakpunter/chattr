@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Private chatroom</title>
+    <link rel="stylesheet" type="text/css" href="css/style.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="notif"></div>
+        <div id="users">
+            <h1>Chattr</h1>
+        </div>
+        <div id="messages">
+            <div class="message" id="msgtpl" style="display:none;">
+                <img src="{{{user.avatar}}}" alt="Avatar de {{{user.username}}}">
+                <div class="info">
+                    <p>
+                        <strong>{{user.username}}</strong>
+                    </p>
+                    <p>{{message}}</p>
+                    <span class="date">{{h}}:{{m}}</span>
+                </div>
+            </div>
+        </div>
+        <form action="" id="form">
+            <input type="text" id="message" class="text" placeholder="Exprime-toi !">
+            <input type="submit" value="Envoyer" id="send" class="submit">
+            <input type="button" value="Message privé" id="mp-button">
+            <input type="button" id="notifier" value="0" title="Notifications">
+        </form>
+    </div>
+
+    <div id="sendmp">
+        <h2>Envoyer un message privé</h2>
+        <form action="" id="mpsender">
+            <p>
+                <label for="receiver">Destinataire :</label>
+                <input type="text" name="receiver" placeholder="Nom du destinataire" id="receiver" required>
+            </p>
+            <p>
+                <label for="content">Message :</label>
+                <textarea name="content" id="content" cols="30" rows="10" required></textarea>
+            </p>
+            <p class="right">
+                <input type="submit" id="send-mp">
+                <input type="button" value="Fermer" class="close">
+            </p>
+        </form>
+    </div>
+
+    <div id="mp">
+        <h2>Nouveau message privé</h2>
+        <img src="{{{sender.avatar}}}" alt="Avatar de {{{sender.username}}}">
+        <p>
+            <strong>Expéditeur : {{sender.username}}</strong>
+        </p>
+        <p class="received">{{content}}</p>
+        <span class="date">{{h}}:{{m}}</span>
+        <form action="" id="mp-reply">
+            <p>
+                <label for="mp-reply">Repondre :</label>
+                <textarea name="mp-reply" id="reply-content" cols="30" rows="10" required></textarea>
+            </p>
+            <p class="right">
+                <input type="submit" value="Envoyer" id="send-reply">
+                <input type="button" value="Fermer" class="close">
+            </p>
+        </form>
+    </div>
+
+    <div id="login">
+        <form action="" id="loginform">
+            <h1>Chattr</h1>
+            <p>Sans inscription,
+                <br>sans historique</p>
+            <input type="text" name="login" id="username" placeholder="Nom d'utilisateur" required>
+            <br>
+            <input type="button" value="Entrer un avatar" id="hasAvatar">
+            <input type="url" name="avatar" id="avatar" placeholder="URL de votre image">
+            <br>
+            <div id="image-preview"></div>
+            <br>
+            <input type="submit" value="Se Connecter">
+        </form>
+    </div>
+
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="js/ion.sound.min.js"></script>
+    <script src="js/mustache.min.js"></script>
+    <script src="http://localhost:1337/socket.io/socket.io.js"></script>
+    <script src="js/client.js"></script>
+</body>
+
+</html>
