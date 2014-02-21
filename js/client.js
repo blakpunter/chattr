@@ -54,7 +54,7 @@
     var msgtpl = $('#msgtpl').html();
     $('#msgtpl').remove();
 
-    var socket = io.connect('http://localhost:1337');
+    var socket = io.connect('http://www.chattr.com:80');
 
 
     /** Gestion connection */
@@ -141,11 +141,11 @@
 
 
     socket.on('logged', function (user) {
-        $('#login').fadeOut(4000);
+        $('#login').fadeOut(1000);
         setTimeout(function () {
             $('.container').fadeIn();
             $('#message').focus();
-        }, 2000);
+        }, 1000);
         me = user;
 
     });
